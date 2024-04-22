@@ -21,8 +21,8 @@ var isPalindrome = function(s) {
     while (alphabetArray.length > 1) {
         const front = alphabetArray.shift();
         const end = alphabetArray.pop();
+        
         if (front !== end) {
-            console.log("여기서", alphabetArray);
             return false;
         }
     }
@@ -31,6 +31,5 @@ var isPalindrome = function(s) {
         return true;
     }
     
-    console.log("last", alphabetArray);
     return false;
 };
