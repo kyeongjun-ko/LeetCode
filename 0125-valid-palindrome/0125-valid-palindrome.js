@@ -4,32 +4,33 @@
  */
 
 var isPalindrome = function(s) {
-    const copy = s;
+    const givenString = s;
     
-    if (copy.length === 1) {
+    if (givenString.length === 1) {
         return true;
     }
     
     let reg = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
-    const cleanString = copy
+    
+    const alphabet = givenString
         .replace(reg, "")
         .toLowerCase();
 
-    const stringArray = [...cleanString];
+    const alphabetArray = [...alphabet];
     
-    while (stringArray.length > 1) {
-        const front = stringArray.shift();
-        const end = stringArray.pop();
+    while (alphabetArray.length > 1) {
+        const front = alphabetArray.shift();
+        const end = alphabetArray.pop();
         if (front !== end) {
-            console.log("여기서", stringArray);
+            console.log("여기서", alphabetArray);
             return false;
         }
     }
     
-    if (stringArray.length <= 1) {
+    if (alphabetArray.length <= 1) {
         return true;
     }
     
-    console.log("last", stringArray);
+    console.log("last", alphabetArray);
     return false;
 };
