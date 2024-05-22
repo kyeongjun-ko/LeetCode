@@ -3,34 +3,57 @@
  * @return {string}
  */
 var capitalizeTitle = function(title) {
-    // 1. 띄어쓰기로 나누기
-    // 2. 띄어쓰기로 나눈문자열 하나씩 순회하면서 재정의
-    // 3. 문자열로 변환한뒤 리턴
-    const copyString = title;
-    const result = [];
-    const debind = copyString.split(" ");
+    // 풀이1
+    // const wordList = title.split(" ");
+    // const result = [];
     
-    for (const word of debind) {
-        if (word.length < 3) {
-            console.log("length2 word", word);
-            
-            result.push(word.toLowerCase());
-            continue;
-        }
-        const convert = [...word].map((e, index) => {
-            if (index === 0) {
-                return e.toUpperCase();
-            } else {
-                return e.toLowerCase();
-            }
-        });
+    // for (const word of wordList) {
+    //     if (word.length < 3) {
+    //         result.push(word.toLowerCase());
+
+    //         continue;
+    //     }
+
+    //     const convert = [...word].map((e, index) => {
+    //         if (index === 0) {
+    //             return e.toUpperCase();
+    //         }
+    
+    //         return e.toLowerCase();
+    //     });
         
-        result.push(convert.join(""));
-        console.log("word1", word)
-        console.log("word2", convert.join(""))
-    }
+    //     result.push(convert.join(""));
+    // }
     
-    return result.join(" ");
-    console.log("result", result);
-    // 1. 한번에 순회하면서 띄어쓰기가 포함되는 경우 그다음 문자열 대문자변환 나머지는 소문자변환
+    // return result.join(" ");
+
+
+    // 풀이2
+    const reverseList = [...title].reverse();
+
+    let length = 0;
+
+    const result = reverseList.map((e, index, list) => {
+        length++;
+
+        if (e === " ") {
+            length = 0;
+
+            return e;
+        }
+
+        if (length > 2) {
+            if (index === reverseList.length - 1) {
+                return e.toUpperCase();
+            }
+
+            if (list[index + 1] === " ") {
+                return e.toUpperCase();
+            }
+        }
+        
+        return e.toLowerCase();
+    });
+
+    return result.reverse().join("");
 };
