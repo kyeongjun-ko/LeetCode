@@ -3,27 +3,26 @@
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-//     if (x < 0) {
-//         return false;
-//     }
+    if (x < 0) {
+        return false;
+    }
     
-//     const stringNumber = [...String(x)];
+    const stringNumber = [...String(x)];
     
-//     while (stringNumber.length > 1) {
-//         const front = stringNumber.shift();
-//         const back = stringNumber.pop();
+    while (stringNumber.length > 1) {
+        const front = stringNumber.shift();
+        const back = stringNumber.pop();
         
-//         if (front !== back) {
-//             return false;
-//         }
-//     }
+        if (front !== back) {
+            return false;
+        }
+    }
     
-//     return true;
+    return true;
     
-    // Another solution
-    
-    const reverseNumber = [...String(x)].reverse().join("");
-    
-    return x.toString() === reverseNumber;
+    // Another solution 
+    // const reverseNumber = [...String(x)].reverse().join("");
+
+    // return x.toString() === reverseNumber;
     
 };
