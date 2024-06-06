@@ -18,10 +18,10 @@ var isPalindrome = function(x) {
         }
     }
     
-    // return true;
-    console.log("stringNumber", stringNumber);
+    return true;
+//     console.log("stringNumber", stringNumber);
     
-    if (stringNumber.length === 1 || stringNumber.length === 0) {
-        return true;
-    }
+//     if (stringNumber.length === 1 || stringNumber.length === 0) {
+//         return true;
+//     }
 };
