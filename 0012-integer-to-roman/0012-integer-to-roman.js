@@ -31,7 +31,6 @@ var intToRoman = function(num) {
     };
 
     const targetList = addZero(splitNumber);
-    console.log("targetList", targetList);
     
     /*
     1. 주어진 숫자를 spilt으로 배열로 만든다.
@@ -45,7 +44,7 @@ var intToRoman = function(num) {
     const result = targetList.reduce((a, b) => {
         const [digit, number] = b.map(Number);
         
-        if (b[0].length <= 3) {
+        if (digit.toString().length <= 3) {
             if (number === 4) {
                 return a + romanMap[digit] + romanMap[(digit * 5)];
             }
