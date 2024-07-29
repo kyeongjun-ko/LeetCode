@@ -38,13 +38,13 @@ var intToRoman = function(num) {
             
             if (romanMap[originNumber]) {
                 return a + romanMap[originNumber];
-            } else {
-                if (number > 5) {
-                    return a + romanMap[(digit * 5)] + romanMap[digit].repeat(number - 5);
-                }
-                
-                return a + romanMap[digit].repeat(number);
-            }     
+            }
+            
+            if (number > 5) {
+                return a + romanMap[(digit * 5)] + romanMap[digit].repeat(number - 5);
+            }
+
+            return a + romanMap[digit].repeat(number);
         }
         
         return a + romanMap[digit].repeat(number);
