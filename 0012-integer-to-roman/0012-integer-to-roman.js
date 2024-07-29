@@ -13,7 +13,6 @@ var intToRoman = function(num) {
         1000: "M"
     };
 
-
     const splitNumber = num.toString().split("").reduce((acc, cur, index, list) => {
         const digitNumber = list.length - 1 - index;
         
