@@ -5,11 +5,17 @@
 var intToRoman = function(num) {
     const romanMap = {
         1: "I",
+        4: "IV",
         5: "V",
+        9: "IX",
         10: "X",
+        40: "XL",
         50: "L",
+        90: "XC",
         100: "C",
+        400: "CD",
         500: "D",
+        900: "CM",
         1000: "M"
     };
 
@@ -28,16 +34,8 @@ var intToRoman = function(num) {
         const [digit, number] = b.map(Number);
         
         if (digit.toString().length <= 3) {
-            if (number === 5) {
-                return a + romanMap[(digit * 5)];
-            }
-            
-            if (number === 4) {
-                return a + romanMap[digit] + romanMap[(digit * 5)];
-            }
-
-            if (number === 9) {
-                return a + romanMap[digit] + romanMap[(digit * 10)];  
+            if (number === 1 || number === 4 || number === 5 || number === 9) {
+                return a + romanMap[(digit * number)];
             }
             
             if (number > 5) {
