@@ -24,20 +24,8 @@ var intToRoman = function(num) {
         return acc;
     }, []);
     
-
-    
-    console.log("splitNumber", splitNumber);
-
-    /*
-    1. 주어진 숫자를 spilt으로 배열로 만든다.
-    2. map을 사용하여 수 => [자릿수, 반복] 으로 만든다.
-    3. reduce메서드를 사용해서 콜백함수를 실행시킨다.
-    첫번째 인자의 길이가 3이하일때
-    두번째 인자의 숫자가 0이 아니면서 5보다 낮으면은 5-x 한만큼 첫번째인자반복
-    두번째 인자의 숫자가 0이아니면서 5보다 크면은 첫번째인자 *5 한값을 추가하고 그 뒤에 5-x만큼 붙인다.
-    */
-
-    const result = splitNumber.reduce((a, b) => {
+  
+    const romanResult = splitNumber.reduce((a, b) => {
         const [digit, number] = b.map(Number);
         
         if (digit.toString().length <= 3) {
@@ -63,5 +51,5 @@ var intToRoman = function(num) {
         }
     }, "")
 
-    return result;
+    return romanResult;
 };
