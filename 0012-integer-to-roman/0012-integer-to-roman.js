@@ -34,15 +34,17 @@ var intToRoman = function(num) {
         const [digit, number] = b.map(Number);
         
         if (digit.toString().length <= 3) {
-            if (number === 1 || number === 4 || number === 5 || number === 9) {
-                return a + romanMap[(digit * number)];
-            }
+            const originNumber = digit * number;
             
-            if (number > 5) {
-                return a + romanMap[(digit * 5)] + romanMap[digit].repeat(number - 5);
+            if (romanMap[originNumber]) {
+                return a + romanMap[originNumber];
             } else {
+                if (number > 5) {
+                    return a + romanMap[(digit * 5)] + romanMap[digit].repeat(number - 5);
+                }
+                
                 return a + romanMap[digit].repeat(number);
-            }
+            }     
         }
         
         return a + romanMap[digit].repeat(number);
