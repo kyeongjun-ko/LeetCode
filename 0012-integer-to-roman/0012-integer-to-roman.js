@@ -14,34 +14,20 @@ var intToRoman = function(num) {
     };
 
 
-    const splitNumber = num.toString().split("");
-    
-    const splitNumber1 = splitNumber.map((numberString, index) => {
-        const digitNumber = splitNumber.length - 1 - index;
-        if (numberString !== "0") {
-            return [`1${"0".repeat(digitNumber)}`, numberString];
+    const splitNumber = num.toString().split("").reduce((acc, cur, index, list) => {
+        const digitNumber = list.length - 1 - index;
+        
+        if (cur !== "0") {
+            acc.push([`1${"0".repeat(digitNumber)}`, cur]);
         }
-    })
+        
+        return acc;
+    }, []);
     
-    console.log("new List", splitNumber1)
-    
-    const addZero = (list) => {
-        const result = [];
-        let count = list.length - 1;
-    
-        for (const target of list) {
-            if (target !== "0") {
-                result.push([`1${"0".repeat(count)}`, target]);
-            }
-            
-            count--;
-        }
 
-        return result;
-    };
-
-    const targetList = addZero(splitNumber);
     
+    console.log("splitNumber", splitNumber);
+
     /*
     1. 주어진 숫자를 spilt으로 배열로 만든다.
     2. map을 사용하여 수 => [자릿수, 반복] 으로 만든다.
@@ -51,7 +37,7 @@ var intToRoman = function(num) {
     두번째 인자의 숫자가 0이아니면서 5보다 크면은 첫번째인자 *5 한값을 추가하고 그 뒤에 5-x만큼 붙인다.
     */
 
-    const result = targetList.reduce((a, b) => {
+    const result = splitNumber.reduce((a, b) => {
         const [digit, number] = b.map(Number);
         
         if (digit.toString().length <= 3) {
