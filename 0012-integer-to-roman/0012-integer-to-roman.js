@@ -3,7 +3,7 @@
  * @return {string}
  */
 var intToRoman = function(num) {
-    const roman = {
+    const romanMap = {
         1: "I",
         5: "V",
         10: "X",
@@ -45,26 +45,26 @@ var intToRoman = function(num) {
     const result = targetList.reduce((a, b) => {
         const [digit, number] = b.map(Number);
         
-        if (digit.toString().length <= 3) {
+        if (b[0].length <= 3) {
             if (number === 4) {
-                return a + roman[digit] + roman[(digit * 5)];
+                return a + romanMap[digit] + romanMap[(digit * 5)];
             }
 
             if (number === 9) {
-                return a + roman[digit] + roman[(digit * 10)];  
+                return a + romanMap[digit] + romanMap[(digit * 10)];  
             }
             
             if (number === 5) {
-                return a + roman[(digit * 5)];
+                return a + romanMap[(digit * 5)];
             }
             
             if (number > 5) {
-                return a + roman[(digit * 5)] + roman[digit].repeat(number - 5);
+                return a + romanMap[(digit * 5)] + romanMap[digit].repeat(number - 5);
             } else {
-                return a + roman[digit].repeat(number);
+                return a + romanMap[digit].repeat(number);
             }
         } else {
-            return a + roman[digit].repeat(number);
+            return a + romanMap[digit].repeat(number);
         }
     }, "")
 
