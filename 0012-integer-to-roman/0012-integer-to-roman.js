@@ -16,6 +16,15 @@ var intToRoman = function(num) {
 
     const splitNumber = num.toString().split("");
     
+    const splitNumber1 = splitNumber.map((numberString, index) => {
+        const digitNumber = splitNumber.length - 1 - index;
+        if (numberString !== "0") {
+            return [`1${"0".repeat(digitNumber)}`, numberString];
+        }
+    })
+    
+    console.log("new List", splitNumber1)
+    
     const addZero = (list) => {
         const result = [];
         let count = list.length - 1;
@@ -24,6 +33,7 @@ var intToRoman = function(num) {
             if (target !== "0") {
                 result.push([`1${"0".repeat(count)}`, target]);
             }
+            
             count--;
         }
 
