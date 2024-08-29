@@ -15,9 +15,9 @@ const addList = (list, value) => {
     if (list === null) {
         if (typeof value === "number") {
             return new ListNode(value);
+        } else {
+            return value;
         }
-
-        return value;
     }
     
     list.next = addList(list.next, value);
